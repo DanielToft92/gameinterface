@@ -28,3 +28,18 @@ menuButtons.forEach(button => {
         alert(`Åbner: ${this.textContent}`);
     });
 });
+
+function updateTime() {
+    const timeDisplay = document.querySelector('.time-display');
+    const now = new Date();
+
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}`;
+
+    timeDisplay.textContent = timeString;
+}
+
+setInterval(updateTime, 1000);
+
+updateTime();
