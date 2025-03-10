@@ -29,6 +29,14 @@ menuButtons.forEach(button => {
     });
 });
 
+const bagButtons = document.querySelectorAll('.bag-button');
+bagButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const altText = this.querySelector('img').alt;
+        alert(`Åbner: ${altText}`);
+    });
+});
+
 function updateTime() {
     const timeDisplay = document.querySelector('.time-display');
     const now = new Date();
