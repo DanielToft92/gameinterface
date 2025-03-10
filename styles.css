@@ -13,7 +13,7 @@ body {
     height: 100vh;
 }
 
-/* Top Section */
+/* Top Section - minimap */
 .top-section {
     position: absolute;
     top: 10px;
@@ -44,7 +44,7 @@ body {
     font-size: 14px;
 }
 
-/* Player and Enemy icon, info and bars*/
+/* Player and Enemy Info */
 .player-enemy-info {
     position: absolute;
     bottom: 120px;
@@ -91,9 +91,9 @@ body {
     margin: 0 10px;
 }
 
-/* Enemy icon/bar rotation */
+/* Enemy Info rotation */
 .enemy-info {
-    flex-direction: row-reverse; /
+    flex-direction: row-reverse;
     transform: rotate(180deg);
 }
 
@@ -101,6 +101,7 @@ body {
 .enemy-info .icon {
     transform: rotate(180deg);
 }
+
 /* Bottom Section */
 .bottom-section {
     position: absolute;
@@ -173,11 +174,11 @@ body {
     border-radius: 5px;
 }
 
-/* Game menu*/
+/* Game Menu Bar */
 .game-menu-bar {
     position: absolute;
     bottom: 10px;
-    left: calc(50% + 500px);
+    left: calc(50% + 450px);
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
@@ -196,8 +197,7 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Actionbars */
-
+/* Action Bars */
 .action-bars {
     display: flex;
     flex-direction: column;
