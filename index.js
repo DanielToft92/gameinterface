@@ -7,7 +7,5 @@ document.getElementById('settingsButton').addEventListener('click', () => {
 });
 
 document.getElementById('exitGameButton').addEventListener('click', () => {
-    if (confirm('Are you sure you want to exit the game?')) {
-        window.close();
-    }
+    window.location.href = 'exitgame.html';
 });

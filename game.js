@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Chat Input Functionality
     const chatInput = document.querySelector('.chat-input');
     const chatMessages = document.querySelector('.chat-messages');
 
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const spells = document.querySelectorAll('.spell');
     const actionButtons = document.querySelectorAll('.action-button');
 
-    // Track spells assigned to keys
     const spellsMap = {
         '1': null,
         '2': null,
@@ -115,36 +113,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     actionButtons.forEach(button => {
-        button.addEventListener('dragover', (e) => {
-            e.preventDefault();
-        });
-
         button.addEventListener('drop', (e) => {
             e.preventDefault();
             const spellName = e.dataTransfer.getData('text/plain');
             const key = button.dataset.key;
 
-            actionButtons.forEach(btn => {
-                if (btn.querySelector('.spell-name').textContent === spellName) {
-                    btn.querySelector('.spell-name').textContent = '';
-                    spellsMap[btn.dataset.key] = null;
+            const oldButton = Array.from(actionButtons).find(btn => btn.querySelector('.spell-name').textContent === spellName);
 
-                    const oldCooldownOverlay = btn.querySelector('.cooldown-overlay');
-                    if (oldCooldownOverlay) {
-                        oldCooldownOverlay.style.display = 'none';
-                    }
+            if (oldButton) {
+                oldButton.querySelector('.spell-name').textContent = '';
+                spellsMap[oldButton.dataset.key] = null;
+
+                const oldCooldownOverlay = oldButton.querySelector('.cooldown-overlay');
+                if (oldCooldownOverlay) {
+                    oldCooldownOverlay.style.display = 'none'; // Hide the overlay
+                    oldCooldownOverlay.textContent = ''; // Clear the cooldown text
                 }
-            });
+            }
 
             button.querySelector('.spell-name').textContent = spellName;
-
             spellsMap[key] = spellName;
 
-            if (spellCooldowns[spellName]) {
+            if (spellCooldowns[spellName]?.isOnCooldown) {
                 const cooldownOverlay = button.querySelector('.cooldown-overlay');
                 if (cooldownOverlay) {
-                    cooldownOverlay.style.display = 'flex';
-                    cooldownOverlay.textContent = spellCooldowns[spellName].timeLeft;
+                    cooldownOverlay.style.display = 'flex'; // Show the overlay
+                    cooldownOverlay.textContent = spellCooldowns[spellName].timeLeft; // Update the cooldown text
+                }
+            } else {
+                const cooldownOverlay = button.querySelector('.cooldown-overlay');
+                if (cooldownOverlay) {
+                    cooldownOverlay.style.display = 'none'; // Hide the overlay
+                    cooldownOverlay.textContent = ''; // Clear the cooldown text
                 }
             }
 
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
             actionButtons.forEach(button => {
                 if (button.querySelector('.spell-name').textContent === spellName) {
                     button.querySelector('.spell-name').textContent = '';
-                    spellsMap[button.dataset.key] = null; // Clear the key in the spells map
+                    spellsMap[button.dataset.key] = null;
 
                     // Clear the cooldown overlay
                     const cooldownOverlay = button.querySelector('.cooldown-overlay');
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, 30000);
                 break;
             case 'Fireball':
-                showNotification('You cast a fireball');
+                showNotification('Fireball casted');
                 break;
             case 'Heal':
                 showNotification('You healed yourself');
@@ -310,4 +310,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadActionBars();
+
+    const popupMenu = document.getElementById('popupMenu');
+    const gameSettingsButton = document.querySelector('.menu-button img[alt="system"]')?.parentElement;
+
+    function togglePopupMenu() {
+        if (popupMenu.style.display === 'flex') {
+            popupMenu.style.display = 'none';
+        } else {
+            popupMenu.style.display = 'flex';
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            togglePopupMenu();
+        }
+    });
+
+    if (gameSettingsButton) {
+        gameSettingsButton.addEventListener('click', togglePopupMenu);
+    }
+
+    const backToGameButton = document.getElementById('backToGameButton');
+    backToGameButton.addEventListener('click', () => {
+        popupMenu.style.display = 'none'; // Close the popup menu
+    });
+
+    const backToMainMenuButton = document.getElementById('backToMainMenuButton');
+    backToMainMenuButton.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+});
+
+document.querySelectorAll('.toggle-details').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const quest = e.target.closest('.quest');
+        const details = quest.querySelector('.quest-details');
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        e.target.textContent = details.style.display === 'block' ? '▲' : '▼';
+    });
+});
+
+const questlogButton = document.querySelector('.menu-button img[alt="questlog"]')?.parentElement;
+const questlogPopup = document.getElementById('questlogPopup');
+const closeQuestlogButton = document.getElementById('closeQuestlog');
+
+function toggleQuestlog() {
+    if (questlogPopup.style.display === 'flex') {
+        questlogPopup.style.display = 'none';
+    } else {
+        questlogPopup.style.display = 'flex';
+    }
+}
+
+if (questlogButton && questlogPopup && closeQuestlogButton) {
+    questlogButton.addEventListener('click', toggleQuestlog);
+    closeQuestlogButton.addEventListener('click', toggleQuestlog);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'l' || e.key === 'L') {
+        toggleQuestlog();
+    }
 });
