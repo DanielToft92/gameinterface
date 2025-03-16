@@ -94,7 +94,7 @@ body {
     margin: 0 10px;
 }
 
-/* Enemy Info - Rotated 180 degrees */
+/* Enemy Info - rotate */
 .enemy-info {
     flex-direction: row-reverse;
     transform: rotate(180deg);
@@ -225,7 +225,6 @@ body {
     height: 24px;
 }
 
-
 /* Action Bars */
 .action-bars {
     position: absolute;
@@ -250,8 +249,87 @@ body {
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .action-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.key-indicator {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.spell-name {
+    font-size: 12px;
+    margin-top: 2px;
+    color: #ccc;
+}
+
+/* Spellbook Popup */
+.spellbook-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 2px solid #444;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.spellbook-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid #444;
+}
+
+.spellbook-header h3 {
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #e74c3c;
+}
+
+.spells-container {
+    flex-grow: 1;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.spell {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+    border-radius: 5px;
+    text-align: center;
+    cursor: grab;
+}
+
+.spell:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

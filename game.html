@@ -17,79 +17,146 @@
     </div>
 </div>
 
-    <div class="player-enemy-info">
-        <div class="player-info">
-            <div class="icon player-icon"></div>
-            <div class="bars">
-                <div class="health-bar"></div>
-                <div class="resource-bar"></div>
-            </div>
-        </div>
-        <div class="enemy-info">
-            <div class="bars">
-                <div class="health-bar"></div>
-                <div class="resource-bar"></div>
-            </div>
-            <div class="icon enemy-icon"></div>
+<div class="player-enemy-info">
+    <div class="player-info">
+        <div class="icon player-icon"></div>
+        <div class="bars">
+            <div class="health-bar"></div>
+            <div class="resource-bar"></div>
         </div>
     </div>
-
-    <div class="bottom-section">
-        <div class="chat-window">
-            <div class="chat-tabs">
-                <div class="tab general-tab active">General</div>
-                <div class="tab add-tab">+</div>
-            </div>
-            <div class="chat-messages">
-                <p>System: You are now logged in!</p>
-            </div>
-            <input type="text" class="chat-input" placeholder="Send a message...">
+    <div class="enemy-info">
+        <div class="bars">
+            <div class="health-bar"></div>
+            <div class="resource-bar"></div>
         </div>
-
-        <div class="bag-bar">
-            <button class="bag-button"><img src="images/mainbag.png" alt="mainbag"></button>
-            <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
-            <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
-            <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
-            <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
-        </div>
-
-        <div class="game-menu-bar">
-            <button class="menu-button"><img src="images/system.png" alt="system"></button>
-            <button class="menu-button"><img src="images/achievements.png" alt="achievemants"></button>
-            <button class="menu-button"><img src="images/character.png" alt="character"></button>
-            <button class="menu-button"><img src="images/questlog3.png" alt="questlog"></button>
-            <button class="menu-button"><img src="images/spellbook.png" alt="spellbook"></button>
-            <button class="menu-button"><img src="images/skilltree.png" alt="skilltree"></button>
-            <button class="menu-button"><img src="images/social.png" alt="social"></button>
-        </div>
-
-        <div class="action-bars">
-            <div class="action-bar">
-                <button class="action-button">alt+1</button>
-                <button class="action-button">alt+2</button>
-                <button class="action-button">alt+3</button>
-                <button class="action-button">alt+4</button>
-                <button class="action-button">alt+5</button>
-                <button class="action-button">alt+6</button>
-                <button class="action-button">alt+7</button>
-                <button class="action-button">alt+8</button>
-                <button class="action-button">alt+9</button>
-            </div>
-            <div class="action-bar">
-                <button class="action-button">1</button>
-                <button class="action-button">2</button>
-                <button class="action-button">3</button>
-                <button class="action-button">4</button>
-                <button class="action-button">5</button>
-                <button class="action-button">6</button>
-                <button class="action-button">7</button>
-                <button class="action-button">8</button>
-                <button class="action-button">9</button>
-            </div>
-        </div>
+        <div class="icon enemy-icon"></div>
     </div>
 </div>
+
+<div class="bottom-section">
+    <div class="chat-window">
+        <div class="chat-tabs">
+            <div class="tab general-tab active">General</div>
+            <div class="tab add-tab">+</div>
+        </div>
+        <div class="chat-messages">
+            <p>System: You are now logged in!</p>
+        </div>
+        <input type="text" class="chat-input" placeholder="Send a message...">
+    </div>
+
+    <div class="bag-bar">
+        <button class="bag-button"><img src="images/mainbag.png" alt="mainbag"></button>
+        <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
+        <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
+        <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
+        <button class="bag-button"><img src="images/bag.png" alt="Bag"></button>
+    </div>
+
+    <div class="game-menu-bar">
+        <button class="menu-button"><img src="images/system.png" alt="system"></button>
+        <button class="menu-button"><img src="images/achievements.png" alt="achievemants"></button>
+        <button class="menu-button"><img src="images/character.png" alt="character"></button>
+        <button class="menu-button"><img src="images/questlog3.png" alt="questlog"></button>
+        <button class="menu-button"><img src="images/spellbook.png" alt="spellbook"></button>
+        <button class="menu-button"><img src="images/skilltree.png" alt="skilltree"></button>
+        <button class="menu-button"><img src="images/social.png" alt="social"></button>
+    </div>
+
+    <!-- Spellbook Popup -->
+    <div class="spellbook-popup" id="spellbookPopup">
+        <div class="spellbook-header">
+            <h3>Spellbook</h3>
+            <button class="close-button" id="closeSpellbook">X</button>
+        </div>
+        <div class="spells-container">
+            <div class="spell" draggable="true" data-spell="Fireball">Fireball</div>
+            <div class="spell" draggable="true" data-spell="Heal">Heal</div>
+            <div class="spell" draggable="true" data-spell="Barrier">Barrier</div>
+            <div class="spell" draggable="true" data-spell="Blink">Blink</div>
+        </div>
+    </div>
+
+    <div class="action-bars">
+        <div class="action-bar">
+            <button class="action-button" data-key="alt+1" draggable="true">
+                <span class="key-indicator">alt+1</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+2" draggable="true">
+                <span class="key-indicator">alt+2</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+3" draggable="true">
+                <span class="key-indicator">alt+3</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+4" draggable="true">
+                <span class="key-indicator">alt+4</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+5" draggable="true">
+                <span class="key-indicator">alt+5</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+6" draggable="true">
+                <span class="key-indicator">alt+6</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+7" draggable="true">
+                <span class="key-indicator">alt+7</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+8" draggable="true">
+                <span class="key-indicator">alt+8</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="alt+9" draggable="true">
+                <span class="key-indicator">alt+9</span>
+                <span class="spell-name"></span>
+            </button>
+        </div>
+        <div class="action-bar">
+            <button class="action-button" data-key="1" draggable="true">
+                <span class="key-indicator">1</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="2" draggable="true">
+                <span class="key-indicator">2</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="3" draggable="true">
+                <span class="key-indicator">3</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="4" draggable="true">
+                <span class="key-indicator">4</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="5" draggable="true">
+                <span class="key-indicator">5</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="6" draggable="true">
+                <span class="key-indicator">6</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="7" draggable="true">
+                <span class="key-indicator">7</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="8" draggable="true">
+                <span class="key-indicator">8</span>
+                <span class="spell-name"></span>
+            </button>
+            <button class="action-button" data-key="9" draggable="true">
+                <span class="key-indicator">9</span>
+                <span class="spell-name"></span>
+            </button>
+        </div>
+    </div>
+
 
 <script src="game.js"></script>
 
