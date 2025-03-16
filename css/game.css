@@ -1,12 +1,4 @@
-/* General Styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    overflow: hidden;
-}
-
+/* game.css */
 .game-interface {
     position: relative;
     width: 100vw;
@@ -22,7 +14,7 @@ body {
 
 .minimap {
     background-color: rgba(0, 0, 0, 0.7);
-    border: 2px solid #444;
+    border: 2px solid var(--secondary-color);
     width: 200px;
     height: 200px;
     border-radius: 10px;
@@ -36,7 +28,7 @@ body {
     width: 90%;
     height: 80%;
     background-color: #333;
-    background-image: url('images/minimap.jpg');
+    background-image: url('../images/minimap.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 5px;
@@ -63,12 +55,6 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 5px;
     border-radius: 5px;
-}
-
-.player-info .bars, .enemy-info .bars {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
 }
 
 .health-bar, .resource-bar {
@@ -134,7 +120,7 @@ body {
     display: flex;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .tab {
@@ -143,7 +129,7 @@ body {
 }
 
 .tab.active {
-    background-color: #444;
+    background-color: var(--secondary-color);
 }
 
 .add-tab {
@@ -169,14 +155,14 @@ body {
     bottom: 10px;
     right: 10px;
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .bag-button {
     width: 30px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid #444;
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -197,17 +183,17 @@ body {
 .game-menu-bar {
     position: absolute;
     bottom: 10px;
-    left: calc(50% + 350px);
+    left: calc(50% + 385px);
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .menu-button {
     width: 30px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid #444;
+    border: 1px solid var(--secondary-color);
     color: white;
     cursor: pointer;
     border-radius: 5px;
@@ -245,7 +231,7 @@ body {
     width: 40px;
     height: 40px;
     background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid #444;
+    border: 1px solid var(--secondary-color);
     color: white;
     cursor: pointer;
     border-radius: 5px;
@@ -280,7 +266,7 @@ body {
     width: 300px;
     height: 400px;
     background-color: rgba(0, 0, 0, 0.9);
-    border: 2px solid #444;
+    border: 2px solid var(--secondary-color);
     border-radius: 10px;
     display: none;
     flex-direction: column;
@@ -293,7 +279,7 @@ body {
     align-items: center;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .spellbook-header h3 {
@@ -309,7 +295,7 @@ body {
 }
 
 .close-button:hover {
-    color: #e74c3c;
+    color: var(--error-color);
 }
 
 .spells-container {
@@ -324,7 +310,7 @@ body {
 .spell {
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #444;
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
     text-align: center;
     cursor: grab;
@@ -332,4 +318,33 @@ body {
 
 .spell:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Spell notifications */
+
+.notification-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    z-index: 1000;
+}
+
+.notification {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
 }

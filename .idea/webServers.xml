@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dd6bc0be-0d94-4c3d-8297-f010ad64b2ff" name="gameinterface-simply" url="http://linux155.unoeuro.com">
+        <fileTransfer rootFolder="/game-interface" host="linux155.unoeuro.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
