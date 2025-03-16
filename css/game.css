@@ -224,7 +224,7 @@
 .game-menu-bar {
     position: absolute;
     bottom: 10px;
-    left: calc(50% + 385px);
+    left: calc(50% + 415px);
     transform: translateX(-50%);
     display: flex;
     gap: 5px;
@@ -250,6 +250,44 @@
 .menu-button img {
     width: 24px;
     height: 24px;
+}
+
+.menu-button {
+    position: relative; /* Ensure tooltips are positioned relative to the button */
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1000; /* Ensure tooltips are above other elements */
+    bottom: 125%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 14px;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.menu-button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Position below the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent; /* Arrow color */
 }
 
 /* Action Bars */

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game settings</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..
+    700&family=MedievalSharp&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="index.css">
+</head>
+<body>
+
+<div class="settings-container">
+    <h1>Game Settings</h1>
+    <div class="settings-options">
+        <div class="setting">
+            <label for="volume">Volume:</label>
+            <input type="range" id="volume" name="volume" min="0" max="100">
+        </div>
+        <div class="setting">
+            <label for="brightness">Brightness:</label>
+            <input type="range" id="brightness" name="brightness" min="0" max="100">
+        </div>
+        <div class="setting">
+            <label for="resolution">Resolution:</label>
+            <select id="resolution" name="resolution">
+                <option value="1080p">1080p</option>
+                <option value="720p">720p</option>
+                <option value="480p">480p</option>
+            </select>
+        </div>
+        <div class="setting">
+            <label for="fullscreen">Fullscreen:</label>
+            <input type="checkbox" id="fullscreen" name="fullscreen">
+        </div>
+    </div>
+    <button id="saveSettingsButton" class="settings-button">Save Settings</button>
+    <button id="backToGameButton" class="settings-button">Back to menu</button>
+</div>
+
+<script src="settings.js"></script>
+
+</body>
+</html>
