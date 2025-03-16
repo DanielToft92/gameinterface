@@ -53,27 +53,27 @@ body {
 }
 
 #playGameButton {
-    background-color: #28a745; /* Green for "Play Game" */
+    background-color: #28a745;
 }
 
 #playGameButton:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838;
 }
 
 #optionsButton {
-    background-color: #007bff; /* Blue for "Options" */
+    background-color: #007bff;
 }
 
 #optionsButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 #exitGameButton {
-    background-color: #dc3545; /* Red for "Exit Game" */
+    background-color: #dc3545;
 }
 
 #exitGameButton:hover {
-    background-color: #c82333; /* Darker red on hover */
+    background-color: #c82333;
 }
 
 /* Top Section */
