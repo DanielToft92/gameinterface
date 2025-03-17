@@ -220,7 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadActionBars();
 
-    // Popup menu functionality
     if (gameSettingsButton) gameSettingsButton.addEventListener('click', () => togglePopup(popupMenu));
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') togglePopup(popupMenu);
@@ -228,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
     backToGameButton.addEventListener('click', () => togglePopup(popupMenu));
     backToMainMenuButton.addEventListener('click', () => window.location.href = 'index.html');
 
-    // Quest details toggle functionality
     document.querySelectorAll('.toggle-details').forEach(button => {
         button.addEventListener('click', (e) => {
             e.stopPropagation();
