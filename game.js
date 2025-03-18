@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (spell) {
             case 'Barrier':
-                showNotification('You are now shielded from incoming damage');
+                showNotification('You are now shielded from incoming damage for 15 seconds');
                 playerInfo.classList.add('barrier-active');
 
                 spellCooldowns[spell] = {

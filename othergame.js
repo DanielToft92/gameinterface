@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Cache frequently used DOM elements
     const chatInput = document.querySelector('.chat-input');
     const chatMessages = document.querySelector('.chat-messages');
     const addTab = document.querySelector('.add-tab');
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const actionButtons = document.querySelectorAll('.action-button');
     const notificationContainer = document.querySelector('.notification-container');
 
-    // Configuration objects
     const spellsMap = {
         '1': null, '2': null, '3': null, '4': null, '5': null,
         '6': null, '7': null, '8': null, '9': null,
@@ -28,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const spellCooldowns = {};
 
-    // Generic function to toggle popups
     function togglePopup(popup) {
         if (popup.style.display === 'flex') {
             popup.style.display = 'none';
@@ -37,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Chat functionality
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && chatInput.value.trim()) {
             const newMessage = document.createElement('p');
@@ -48,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Add tab functionality
     addTab.addEventListener('click', () => {
         const newTab = document.createElement('div');
         newTab.classList.add('tab');
@@ -56,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('.chat-tabs').insertBefore(newTab, addTab);
     });
 
-    // Generic button click handler
     function handleButtonClick(selector, logMessage) {
         document.querySelectorAll(selector).forEach(button => {
             button.addEventListener('click', () => {
@@ -68,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     handleButtonClick('.menu-button', 'Button clicked');
     handleButtonClick('.bag-button', 'Bag button clicked');
 
-    // Time display functionality
     function updateTime() {
         const now = new Date();
         timeDisplay.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
@@ -76,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateTime, 1000);
     updateTime();
 
-    // Spellbook functionality
     if (spellbookButton && spellbookPopup && closeSpellbookButton) {
         spellbookButton.addEventListener('click', () => togglePopup(spellbookPopup));
         closeSpellbookButton.addEventListener('click', () => togglePopup(spellbookPopup));
@@ -86,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === 'p' || e.key === 'P') togglePopup(spellbookPopup);
     });
 
-    // Questlog functionality
     if (questlogButton && questlogPopup && closeQuestlogButton) {
         questlogButton.addEventListener('click', () => togglePopup(questlogPopup));
         closeQuestlogButton.addEventListener('click', () => togglePopup(questlogPopup));
@@ -96,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === 'l' || e.key === 'L') togglePopup(questlogPopup);
     });
 
-    // Spell drag-and-drop functionality
     spells.forEach(spell => {
         spell.addEventListener('dragstart', (e) => {
             e.dataTransfer.setData('text/plain', e.target.dataset.spell);
@@ -138,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener('dragover', (e) => e.preventDefault());
     document.addEventListener('drop', (e) => e.preventDefault());
 
-    // Spell activation functionality
     document.addEventListener('keydown', (e) => {
         let key = e.altKey ? `alt+${e.key}` : e.key;
         const spell = spellsMap[key];
