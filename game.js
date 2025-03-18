@@ -27,9 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     menuButtons.forEach(button => {
         button.addEventListener('click', function () {
             const buttonName = this.querySelector('img').alt;
-            console.log(`Button clicked: ${buttonName}`);
 
-            if (buttonName !== 'spellbook' && buttonName !== 'questlog') {
+            if (buttonName !== 'spellbook' && buttonName !== 'questlog' && buttonName !== 'system') {
                 showNotification(`You clicked the ${buttonName} button`);
             }
 
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     bagButtons.forEach(button => {
         button.addEventListener('click', function () {
             const buttonName = this.querySelector('img').alt;
-            console.log(`Bag button clicked: ${buttonName}`);
 
             showNotification(`You clicked the ${buttonName} button`);
 
@@ -86,8 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
         closeSpellbookButton.addEventListener('click', () => {
             spellbookPopup.style.display = 'none';
         });
-    } else {
-        console.error("Spellbook button or popup not found!");
     }
 
     document.addEventListener('keydown', (e) => {
